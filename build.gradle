@@ -1,0 +1,31 @@
+repositories {
+    mavenCentral()
+}
+
+apply plugin: "java"
+apply plugin: "idea"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+group = 'stackoverflow-junit-gradle'
+version = "0.1"
+
+dependencies {
+    implementation "org.junit.jupiter:junit-jupiter-engine:5.7.2"
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty "file.encoding", "utf-8"
+    testLogging {
+        showStandardStreams = true
+        displayGranularity = -1
+    }
+}
